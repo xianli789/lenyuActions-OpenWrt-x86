@@ -11,7 +11,7 @@
 #
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.1.2/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.241.10/g' package/base-files/files/bin/config_generate
 # 1. 替换 Luci 的默认核心主题依赖
 sed -i 's/luci-theme-bootstrap/luci-theme-design/g' feeds/luci/collections/luci/Makefile
 # 2. 移除 Lean 源码中硬编码对 Argon 的默认指向
