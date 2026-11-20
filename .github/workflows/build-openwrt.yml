@@ -260,7 +260,7 @@ jobs:
         export GOSUMDB=sum.golang.org
         # 禁止失败后改成 -j1 编整个 world：单线程会把剩下几小时烧光，然后被 GitHub 6h 超时掐掉
         # 并行失败时用同样线程数再跑一次并打开日志，便于直接看到真正的编译错误
-        make -j$(nproc) || make -j$(nproc) V=s 2>&1 | tee build.log
+        make -j$(nproc) || make -j2 V=s 2>&1 | tee build.log
         echo "status=success" >> $GITHUB_OUTPUT
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
